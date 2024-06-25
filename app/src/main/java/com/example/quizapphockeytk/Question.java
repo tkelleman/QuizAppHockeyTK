@@ -3,15 +3,17 @@ package com.example.quizapphockeytk;
 public class Question {
     private String qText;
     private  Boolean correctAns;
+    private int qSound;
 
     public Question() {
         qText = "";
         correctAns = false;
     }
 
-    public Question(String qText, Boolean correctAns) {
+    public Question(String qText, Boolean correctAns, int qSound) {
         this.qText = qText;
         this.correctAns = correctAns;
+        this.qSound = qSound;
     }
 
     public String getqText() {
@@ -28,6 +30,14 @@ public class Question {
 
     public void setCorrectAns(Boolean correctAns) {
         this.correctAns = correctAns;
+    }
+
+    public int getqSound() {
+        return qSound;
+    }
+
+    public void setqSound(int qSound) {
+        this.qSound = qSound;
     }
 
     @Override
