@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top|center_horizontal"
+    android:background="@drawable/tim_foster_e_yzne_qg_s_unsplash"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -11,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:gravity="start"
+        android:gravity="center_horizontal|top"
+        android:paddingTop="50px"
         android:text="Hockey Quiz"
         android:textColor="#003049"
         android:textSize="60sp" />
@@ -20,9 +22,19 @@
         android:id="@+id/recievedScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="Score:"
+        android:textAlignment="center"
         android:textColor="#003049"
-        android:textSize="20sp"
-        android:textAlignment="center" />
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/emailButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#003049"
+        android:textColor="#EFF1F3"
+        android:text="@string/emailButtonText" />
 
 </LinearLayout>

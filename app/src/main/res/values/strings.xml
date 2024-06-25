@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">QuizAppHockeyTK</string>
+    <string name="app_name">Hockey Quiz</string>
+    <string name="emailButtonText">Email Score</string>
+    <string name="trueButtonText">TRUE</string>
+    <string name="q1Text">A hockey game consists of three 20-minute periods.</string>
+    <string name="q2Text">Players can use their hands to carry the puck down the ice.</string>
+    <string name="q3Text">Offside is when an attacking player enters the offensive zone before the puck.</string>
+    <string name="q4Text">Icing is when a player shoots the puck from their defensive zone all the way down the ice and across the opponent\'s goal line without it being touched by another player.</string>
+    <string name="q5Text">Six players, including the goalie, are allowed on the ice for each team at any given time.</string>
+    <string name="correctMessage">Correct! \n +1 Point!</string>
+    <string name="incorrectMessage">Incorrect! \n No Points!</string>
+    <string name="subjectText">Score on Hockey Quiz</string>
+    <string name="bodyText1">"I just scored a "</string>
+    <string name="bodyText2">" out of 5 on the Hockey Quiz"</string>
+    <string name="emailAddress">tkelleman@kent.k12.md.us</string>
+    <string name="printReceivedScore">"Score: "</string>
 </resources>

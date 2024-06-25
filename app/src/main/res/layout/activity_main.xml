@@ -3,15 +3,16 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top|center_horizontal"
+    android:background="@drawable/tim_foster_e_yzne_qg_s_unsplash"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="197dp"
         android:fontFamily="monospace"
-        android:gravity="start"
+        android:gravity="center_horizontal|top"
         android:text="Hockey Quiz"
         android:textColor="#003049"
         android:textSize="60sp" />
@@ -23,52 +24,51 @@
         android:gravity="center"
         android:text="Question:"
         android:textColor="#003049"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="197dp"
-        android:layout_height="205dp"
-        android:gravity="center|center_vertical"
-        android:text="A hockey game consists of three 20-minute periods."
+        android:layout_width="309dp"
+        android:layout_height="435dp"
+        android:gravity="center|top"
+        android:text=""
         android:textAlignment="center"
         android:textColor="#003049"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:gravity="center"
+        android:layout_height="81dp"
+        android:gravity="top|center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/trueButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TRUE" />
+            android:backgroundTint="#003049"
+            android:textColor="#EFF1F3"
+            android:text="@string/trueButtonText" />
+
 
         <Button
             android:id="@+id/falseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#003049"
+            android:textColor="#EFF1F3"
             android:text="FALSE" />
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/doneButton"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DONE"
-        />
-
-    <TextView
-        android:id="@+id/scoreText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Score:"
-        android:textColor="#003049"
-        android:textSize="20sp"
-        android:textAlignment="center" />
+        android:backgroundTint="#003049"
+        android:textColor="#EFF1F3"
+        android:text="NEXT" />
 
 </LinearLayout>
