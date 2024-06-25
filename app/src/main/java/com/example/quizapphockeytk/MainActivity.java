@@ -43,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
         final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click_sound);
 
         //Question List
-        q1 = new Question(getResources().getString(R.string.q1Text), true, R.raw.q2sound);
-        q2 = new Question(getString(R.string.q2Text), false, R.raw.q3sound);
-        q3 = new Question(getString(R.string.q3Text), true,R.raw.q4sound);
-        q4 = new Question(getString(R.string.q4Text), true, R.raw.q2sound);
-        q5 = new Question(getString(R.string.q5Text), true, R.raw.q3sound);
+        q1 = new Question(getResources().getString(R.string.q1Text), true, R.raw.q1sound);
+        q2 = new Question(getString(R.string.q2Text), false, R.raw.q2sound);
+        q3 = new Question(getString(R.string.q3Text), true,R.raw.q3sound);
+        q4 = new Question(getString(R.string.q4Text), true, R.raw.q4sound);
+        q5 = new Question(getString(R.string.q5Text), true, R.raw.q5sound);
         //Sound List
 
         //Questions Arrays
