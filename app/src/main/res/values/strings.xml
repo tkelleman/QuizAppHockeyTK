@@ -14,4 +14,5 @@
     <string name="bodyText2">" out of 5 on the Hockey Quiz"</string>
     <string name="emailAddress">tkelleman@kent.k12.md.us</string>
     <string name="printReceivedScore">"Score: "</string>
+    <string name="previous_score">Previous Score:</string>
 </resources>

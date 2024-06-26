@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/_753289_1_"
-        android:label="@string/app_name"
+        android:label="Hockey Quiz"
         android:roundIcon="@drawable/_753289_1_"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizAppHockeyTK"

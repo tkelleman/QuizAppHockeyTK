@@ -1,6 +1,7 @@
 package com.example.quizapphockeytk;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,12 +27,16 @@ public class MainActivity extends AppCompatActivity {
     Question q1, q2, q3, q4, q5, currentQuestion;
     Question[] questions;
     int currentIndex;
-
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile = "org.example.android.QuizAppHockeyTK";
+    private final String PREVIOUS_SCORE_KEY = "SCORE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         //2. Initializing Variables and Inflating our UI Elements (Connecting ID to Layout)
         trueButton = (Button) findViewById(R.id.trueButton);
@@ -55,6 +60,16 @@ public class MainActivity extends AppCompatActivity {
         currentIndex = 0;
         currentQuestion = questions[currentIndex];
         question.setText(currentQuestion.getqText());
+
+        // Adding Persistent Storage - Shared Preferences Method
+        //initialize the shared preferences
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        //Read initial value
+        int prevScore = mPreferences.getInt(PREVIOUS_SCORE_KEY, 0);
+
+        //Set TextView to Previous Score
+        TextView scoreView = (TextView) findViewById(R.id.previousScoreText);
+        scoreView.setText("Previous Score: " + prevScore);
 
         //3. Do whatever you want to do with its UI Elements
         trueButton.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +118,19 @@ public class MainActivity extends AppCompatActivity {
                 int tempSound = currentQuestion.getqSound();
                 MediaPlayer questionsSound = MediaPlayer.create(MainActivity.this, tempSound);
                 Log.d("tempSound ID", "tempSound" + tempSound);
+
+                //Created SharedPreferences editor object
+                SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                //Write the id of the selected button to our SharedPreferences file
+                //this is an int Key/Value pair where the:
+                //key = PREVIOUS_SCORE = "COLOR"
+                //value = view.getID() = "red_button", "blue_button", etc.
+                preferencesEditor.putInt(PREVIOUS_SCORE_KEY, score);
+                //Commit the value and save the file.
+                preferencesEditor.apply();
+                //Log.d("Previous Score", score);
+
+
                 if (currentIndex < questions.length){
                     //advance and show next question
                     currentQuestion = questions[currentIndex];
