@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527822032715",
+    "project_id": "quizapphockeytk",
+    "storage_bucket": "quizapphockeytk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527822032715:android:d53f95fdb76e790079e2ce",
+        "android_client_info": {
+          "package_name": "com.example.quizapphockeytk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4JDsVZtSX62H71lUEDHQu-sm2IVEhe1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

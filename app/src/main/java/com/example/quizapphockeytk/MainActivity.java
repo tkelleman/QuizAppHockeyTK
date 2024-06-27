@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.database.*;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,12 +32,15 @@ public class MainActivity extends AppCompatActivity {
     private String sharedPrefFile = "org.example.android.QuizAppHockeyTK";
     private final String PREVIOUS_SCORE_KEY = "SCORE";
 
+
+    private DatabaseReference mDatabase;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         //2. Initializing Variables and Inflating our UI Elements (Connecting ID to Layout)
         trueButton = (Button) findViewById(R.id.trueButton);
@@ -45,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
         question = (TextView) findViewById(R.id.question);
         score = 0;
         message = "";
+        mDatabase = FirebaseDatabase.getInstance().getReference("SEND_SCORE");
+        //Initialize MediaPlayer
         final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click_sound);
 
-        //Question List
+        //Questions, Answers, Sounds - Objects
         q1 = new Question(getResources().getString(R.string.q1Text), true, R.raw.q1sound);
         q2 = new Question(getString(R.string.q2Text), false, R.raw.q2sound);
         q3 = new Question(getString(R.string.q3Text), true,R.raw.q3sound);
@@ -112,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 clickSound.start();
                 currentIndex++;
-                clickSound.start();
                 falseButton.setEnabled(true);
                 trueButton.setEnabled(true);
                 int tempSound = currentQuestion.getqSound();
@@ -131,11 +136,14 @@ public class MainActivity extends AppCompatActivity {
                 //Log.d("Previous Score", score);
 
 
+                //FIREBASE DATABASE
+                String key = mDatabase.push().getKey();
+                mDatabase.child(key).setValue(score);
+
                 if (currentIndex < questions.length){
                     //advance and show next question
                     currentQuestion = questions[currentIndex];
                     question.setText(currentQuestion.getqText());
-
                     questionsSound.start();
                 }
                 else {
