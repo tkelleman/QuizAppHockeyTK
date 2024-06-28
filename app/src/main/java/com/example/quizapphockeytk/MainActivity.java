@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.firebase.database.*;
 
 import androidx.activity.EdgeToEdge;
@@ -32,11 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private String sharedPrefFile = "org.example.android.QuizAppHockeyTK";
     private final String PREVIOUS_SCORE_KEY = "SCORE";
 
-
-    private DatabaseReference mDatabase;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,20 +45,19 @@ public class MainActivity extends AppCompatActivity {
         question = (TextView) findViewById(R.id.question);
         score = 0;
         message = "";
-        mDatabase = FirebaseDatabase.getInstance().getReference("SEND_SCORE");
         //Initialize MediaPlayer
         final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click_sound);
 
         //Questions, Answers, Sounds - Objects
         q1 = new Question(getResources().getString(R.string.q1Text), true, R.raw.q1sound);
         q2 = new Question(getString(R.string.q2Text), false, R.raw.q2sound);
-        q3 = new Question(getString(R.string.q3Text), true,R.raw.q3sound);
+        q3 = new Question(getString(R.string.q3Text), true, R.raw.q3sound);
         q4 = new Question(getString(R.string.q4Text), true, R.raw.q4sound);
         q5 = new Question(getString(R.string.q5Text), true, R.raw.q5sound);
         //Sound List
 
         //Questions Arrays
-        questions = new Question[] {q1, q2, q3, q4, q5};
+        questions = new Question[]{q1, q2, q3, q4, q5};
         currentIndex = 0;
         currentQuestion = questions[currentIndex];
         question.setText(currentQuestion.getqText());
@@ -85,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 if (currentQuestion.getCorrectAns() == true) {
                     message = getString(R.string.correctMessage);
                     score++;
-                }
-                else {
+                } else {
                     message = getString(R.string.incorrectMessage);
                 }
                 myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
@@ -103,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 if (currentQuestion.getCorrectAns() == false) {
                     message = getString(R.string.correctMessage);
                     score++;
-                }
-                else {
+                } else {
                     message = getString(R.string.incorrectMessage);
                 }
                 myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
@@ -135,18 +128,12 @@ public class MainActivity extends AppCompatActivity {
                 preferencesEditor.apply();
                 //Log.d("Previous Score", score);
 
-
-                //FIREBASE DATABASE
-                String key = mDatabase.push().getKey();
-                mDatabase.child(key).setValue(score);
-
-                if (currentIndex < questions.length){
+                if (currentIndex < questions.length) {
                     //advance and show next question
                     currentQuestion = questions[currentIndex];
                     question.setText(currentQuestion.getqText());
                     questionsSound.start();
-                }
-                else {
+                } else {
                     //move to score activity
                     //Declare and initialize intent
                     Intent myIntent = new Intent(MainActivity.this, ScoreActivity.class);

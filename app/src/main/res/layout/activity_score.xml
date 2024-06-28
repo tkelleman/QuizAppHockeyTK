@@ -29,6 +29,33 @@
         android:textSize="34sp"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColorHint="#003049"
+        android:hint="Enter Name for High Score"
+        android:textColor="#003049" />
+
+    <TextView
+        android:id="@+id/highScoresReceived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="99"
+        android:backgroundTint="#919ACE"
+        android:gravity="center_horizontal"
+        android:text="@string/highScoresText"
+        android:textColor="#003049" />
+
+    <Button
+        android:id="@+id/highScoresButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#003049"
+        android:textColor="#EFF1F3"
+        android:text="@string/sendHighScoreText" />
+
     <Button
         android:id="@+id/emailButton"
         android:layout_width="wrap_content"
