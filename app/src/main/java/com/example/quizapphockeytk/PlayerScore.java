@@ -3,12 +3,12 @@ package com.example.quizapphockeytk;
 public class PlayerScore {
     public String pName;
     public int pScore;
-    public String pDate;
+    //public String pDate;
 
     public PlayerScore(String pName, int pScore) {
         this.pName = pName;
         this.pScore = pScore;
-        this.pDate = pDate;
+        //this.pDate = pDate;
     }
 
     // Getters and setters
@@ -28,5 +28,7 @@ public class PlayerScore {
         this.pScore = pScore;
     }
 
-
+    public String toSting(){
+        return pName + " - " + pScore;
+    }
 }
