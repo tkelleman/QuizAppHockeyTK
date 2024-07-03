@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
+import java.util.ArrayList;
 
 public class ScoreActivity extends AppCompatActivity {
     //XML Declarations
@@ -66,15 +67,18 @@ public class ScoreActivity extends AppCompatActivity {
                 PlayerScore newPlayerScore = new PlayerScore(name, score);
                 String scoreKey = mDatabaseScore.push().getKey();
                 mDatabaseScore.child(scoreKey).setValue(newPlayerScore);
+                ArrayList<PlayerScore> scoreArrayList = new ArrayList<PlayerScore>();
+
                 mDatabaseScore.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         String result = "";
                         for (DataSnapshot child : snapshot.getChildren()) {
                             result += child.getValue().toString() + "\n";
-
+                            PlayerScore newPlayer = child.getValue(PlayerScore.class);
+                            scoreArrayList.add(newPlayer);
                         }
-                        highScoresReceived.setText("HighScores:\n \n" + result);
+                        highScoresReceived.setText("HighScores:\n \n" + scoreArrayList.toString());
                     }
                     @Override
                     public void onCancelled(DatabaseError error) {

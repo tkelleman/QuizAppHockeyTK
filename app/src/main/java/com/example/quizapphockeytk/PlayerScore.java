@@ -10,6 +10,9 @@ public class PlayerScore {
         this.pScore = pScore;
         //this.pDate = pDate;
     }
+    public PlayerScore() {
+        // Initialize fields to default values if needed
+    }
 
     // Getters and setters
     public String getpName() {
@@ -28,7 +31,7 @@ public class PlayerScore {
         this.pScore = pScore;
     }
 
-    public String toSting(){
-        return pName + " - " + pScore;
+    public String toString(){
+        return "Name: :" + pName + " - " + "Score: " + pScore;
     }
 }
