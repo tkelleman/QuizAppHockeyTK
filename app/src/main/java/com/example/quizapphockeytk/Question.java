@@ -4,16 +4,18 @@ public class Question {
     private String qText;
     private  Boolean correctAns;
     private int qSound;
+    private int qImage;
 
     public Question() {
         qText = "";
         correctAns = false;
     }
 
-    public Question(String qText, Boolean correctAns, int qSound) {
+    public Question(String qText, Boolean correctAns, int qSound, int qImage) {
         this.qText = qText;
         this.correctAns = correctAns;
         this.qSound = qSound;
+        this.qImage = qImage;
     }
 
     public String getqText() {
@@ -39,6 +41,10 @@ public class Question {
     public void setqSound(int qSound) {
         this.qSound = qSound;
     }
+
+    public  int getqImage() { return qImage;}
+
+    public void  setqImage() { this.qImage = qImage;}
 
     @Override
     public String toString() {

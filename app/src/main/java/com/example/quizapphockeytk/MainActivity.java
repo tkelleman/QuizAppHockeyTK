@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     //1.  Declare Instance Variables (UI Elements and Score)
     Button falseButton, trueButton, nextButton;
     TextView question;
+    ImageView image;
     Toast myToast;
     int score = 0;
     String message;
@@ -43,18 +45,18 @@ public class MainActivity extends AppCompatActivity {
         falseButton = (Button) findViewById(R.id.falseButton);
         nextButton = (Button) findViewById(R.id.nextButton);
         question = (TextView) findViewById(R.id.question);
+        image = (ImageView) findViewById(R.id.image);
         score = 0;
         message = "";
         //Initialize MediaPlayer
         final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click_sound);
 
-        //Questions, Answers, Sounds - Objects
-        q1 = new Question(getResources().getString(R.string.q1Text), true, R.raw.q1sound);
-        q2 = new Question(getString(R.string.q2Text), false, R.raw.q2sound);
-        q3 = new Question(getString(R.string.q3Text), true, R.raw.q3sound);
-        q4 = new Question(getString(R.string.q4Text), true, R.raw.q4sound);
-        q5 = new Question(getString(R.string.q5Text), true, R.raw.q5sound);
-        //Sound List
+        //Questions, Answers, Sounds, Images - Objects
+        q1 = new Question(getResources().getString(R.string.q1Text), true, R.raw.q1sound, R.drawable.i1);
+        q2 = new Question(getString(R.string.q2Text), false, R.raw.q2sound, R.drawable.i2);
+        q3 = new Question(getString(R.string.q3Text), true, R.raw.q3sound, R.drawable.i3);
+        q4 = new Question(getString(R.string.q4Text), true, R.raw.q4sound, R.drawable.i4);
+        q5 = new Question(getString(R.string.q5Text), true, R.raw.q5sound, R.drawable.i5);
 
         //Questions Arrays
         questions = new Question[]{q1, q2, q3, q4, q5};
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         //Set TextView to Previous Score
         TextView scoreView = (TextView) findViewById(R.id.previousScoreText);
         scoreView.setText("Previous Score: " + prevScore);
+
+
+        image.setImageResource(R.drawable.i1);
 
         //3. Do whatever you want to do with its UI Elements
         trueButton.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 falseButton.setEnabled(true);
                 trueButton.setEnabled(true);
                 int tempSound = currentQuestion.getqSound();
+                //int tempImage = currentQuestion.getqImage();
                 MediaPlayer questionsSound = MediaPlayer.create(MainActivity.this, tempSound);
                 Log.d("tempSound ID", "tempSound" + tempSound);
 
@@ -132,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     //advance and show next question
                     currentQuestion = questions[currentIndex];
                     question.setText(currentQuestion.getqText());
+                    image.setImageResource(currentQuestion.getqImage());
                     questionsSound.start();
                 } else {
                     //move to score activity
